@@ -1,0 +1,6 @@
+my_obj(a i32, b String) is
+  public redef json_members array (String, Any) =>
+    [($"a", id Any a), ($"b", id Any b)]
+
+_ := io.file.write (path.of "data.json") (my_obj 1 "hello2").json_encode
+# ./build/bin/fz -modules=json_encode ./Idiom/92.fz

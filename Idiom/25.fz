@@ -1,0 +1,17 @@
+ready := concur.atomic bool .new false
+value := concur.atomic String .new ""
+
+cnd := concur.sync.condition.new.or_panic
+
+thrd := concur.threads.spawn ()->
+  cnd.synchronized ()->
+    while !ready.read
+      check cnd.wait
+  say value.read
+
+value.write "Alan"
+
+cnd.synchronized ()->
+  ready.write true
+  check cnd.signal
+thrd.join

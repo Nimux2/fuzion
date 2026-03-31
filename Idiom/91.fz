@@ -1,0 +1,4 @@
+x := (io.slurp (path.of "data.json")).bind content->
+  nom.parsers.json.call content
+say x
+# ./build/bin/fz -modules=nom ./Idiom/91.fz

@@ -1,0 +1,8 @@
+ex83 : Java is
+  fuzion.jvm.use _ [] ()->
+    Pattern := java.util.regex.Pattern
+    r := Pattern.compile "htt+p"
+    say r
+
+_ := ex83
+# Not currently working
